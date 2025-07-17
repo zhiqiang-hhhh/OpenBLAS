@@ -3,7 +3,10 @@
 ##
 
 cmake_minimum_required(VERSION 3.16.0)
-
+# A known problem of OpenBLAS.
+# It can not be built with -O0 optimization level.
+# https://stackoverflow.com/questions/63023087/inline-asm-fails-to-compile-without-optimization?utm_source=chatgpt.com
+add_compile_options(-Wno-everything -O3)
 set (CMAKE_ASM_SOURCE_FILE_EXTENSIONS "S")
 project(OpenBLAS C ASM)
 
